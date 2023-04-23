@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Animal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            flex-direction: none;
+            scroll-padding-top: 4rem;
+            scroll-behavior: smooth;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        body {
+            background: #2e2e2e;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 70px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            height: 70px;
+            top: 0;
+            right: 0;
+            z-index: 10000;
+            align-items: center;
+            padding: 18px 100px;
+            transition: 0.5s linear;
+            background: #2e2e2e;
+            text-align: center;
+        }
+
+
+        header .logo {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 2em;
+        }
+
+
+        header .navbar {
+            display: flex;
+        }
+
+        header .navbar a {
+            padding: 8px 17px;
+            color: #fff;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: 0.2s all linear;
+        }
+
+        header .navbar a:hover {
+            color: #30fe6c;
+            transition: 0.2s all linear;
+        }
+
+        header .navbar li.active a {
+            color: #30fe6c;
+        }
+
+
+
+        #home {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+        }
+
+
+        #home .home-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+            height: 100vh;
+        }
+
+        #home .home-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+            height: 100vh;
+            grid-gap: 20px;
+            padding: 50px;
+        }
+
+
+        #home .home-left .text h4::first-letter {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #30fe6c;
+        }
+
+        #home .home-left .text h4 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #222;
+            letter-spacing: 0.05em;
+        }
+
+        #home .home-left .text .btn a {
+            position: relative;
+            display: inline-block;
+            font-size: 1rem;
+            max-width: 300px;
+            background-color: #30fe6c;
+            color: #222;
+            border-radius: .25rem;
+            text-align: center;
+            padding: 18px 30px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-top: 10px;
+        }
+
+        #home .home-left .img-left {
+            width: 300px;
+            height: 300px;
+        }
+
+
+        #diary {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #fff;
+            padding: 50px;
+        }
+
+
+        #diary h1::first-letter {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #30fe6c;
+        }
+
+        #diary h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #222;
+            letter-spacing: 0.05em;
+            margin: 20px;
+        }
+
+        #diary .diary-exmaple {
+            display: flex;
+            justify-content: space-between;
+            grid-gap: 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+        #diary .diary-exmaple .left {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        #diary .diary-exmaple .left .card {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        #diary .diary-exmaple .left .card .img-card {
+            max-width: 250px;
+            max-height: 250px;
+
+        }
+
+        #diary .diary-exmaple .left .card .detail,
+        #diary .diary-exmaple .right .card .detail {
+            padding: 20px;
+        }
+
+        #diary .diary-exmaple .left .card h2,
+        #diary .diary-exmaple .right .card h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        #diary .diary-exmaple .left .card p,
+        #diary .diary-exmaple .right .card p {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #9c9a9a;
+            letter-spacing: 0.05em;
+        }
+
+        #diary .diary-exmaple .left .card span,
+        #diary .diary-exmaple .right .card span {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            font-size: 1rem;
+            max-width: 300px;
+            background-color: #30fe6c;
+            color: #222;
+            border-radius: .25rem;
+            text-align: center;
+            padding: 9px 20px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-top: 10px;
+
+        }
+
+        #diary .diary-exmaple .right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #diary .diary-exmaple .right h3::first-letter {
+            font-size: 2.5rem;
+        }
+
+        #diary .diary-exmaple .right h3 {
+            color: #222;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        #diary .diary-exmaple .right .con {
+            margin-top: 20px;
+            min-height: 100vh;
+        }
+
+        #diary .wrapper {
+            margin-top: 2.5rem;
+            display: flex;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        #diary .wrapper i {
+            top: 50%;
+            height: 44px;
+            width: 44px;
+            color: #2e2e2e;
+            cursor: pointer;
+            font-size: 1.15rem;
+            position: absolute;
+            text-align: center;
+            line-height: 44px;
+            background: #30fe6c;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.1s linear;
+        }
+
+        #diary .wrapper i:active {
+            transform: translateY(-50%) scale(0.9);
+        }
+
+        #diary .wrapper i:hover {
+            background: #2e2e2e;
+            color: #30fe6c;
+        }
+
+        #diary .wrapper i:first-child {
+            left: -22px;
+            display: none;
+        }
+
+        .wrapper i:last-child {
+            right: -22px;
+        }
+
+        #diary .wrapper .carousel {
+            font-size: 0px;
+            cursor: pointer;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            scroll-behavior: smooth;
+        }
+
+        #diary .wrapper .carousel .card {
+            width: calc(100% / 4);
+            height: 300px;
+            text-align: center;
+            margin-left: 14px;
+        }
+
+        #diary .wrapper .carousel .card img {
+            width: 250px;
+            height: 200px;
+            border-radius: 2.5px;
+        }
+
+
+
+        #diary .wrapper .carousel .card .detail h2 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        #diary .wrapper .carousel .card .detail p {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #9c9a9a;
+        }
+
+        #diary .wrapper .carousel .card .detail span {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            font-size: 0.75rem;
+            max-width: 300px;
+            background-color: #222;
+            color: #30fe6c;
+            border-radius: .25rem;
+            text-align: center;
+            padding: 5px 10px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-top: 10px;
+        }
+
+        #diary .modal-box {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            z-index: 100000;
+            top: 0;
+            left: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #diary .modal-box .bg {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: rgb(33, 33, 33, 0.5);
+            z-index: -1;
+        }
+
+        #diary .modal-box .modal-card {
+            max-width: 36rem;
+            max-height: 36rem;
+            background: #fff;
+            z-index: 1;
+            border-radius: 5px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            position: relative;
+        }
+
+        #diary .modal-box .modal-card .card {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+
+        }
+
+
+        #diary .modal-box .modal-card .card img {
+            max-width: 300px;
+            max-height: 350px;
+
+        }
+
+        #diary .modal-box .modal-card .card .detail {
+            padding: 10px;
+        }
+
+        #diary .modal-box .modal-card .card .detail h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        #diary .modal-box .modal-card .card .detail h3 {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        #diary .modal-box .modal-card .btn {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #30fe6c;
+            top: 5%;
+            right: 2%;
+
+        }
+
+        #about {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #fff;
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        #about h1::first-letter {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #30fe6c;
+        }
+
+        #about h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #222;
+            letter-spacing: 0.05em;
+            margin: 20px;
+        }
+
+
+        #about .left .social {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 20px;
+            padding: 20px;
+        }
+
+        #about .left .social a {
+            color: #2e2e2e;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+
+        @media (max-width: 990px) {
+            #diary .diary-exmaple {
+                flex-direction: column-reverse;
+            }
+
+            #diary .diary-exmaple .right h3 {
+                text-align: center;
+            }
+
+            #diary .diary-exmaple .left {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #diary .wrapper .carousel .card {
+                width: calc(100% / 2);
+            }
+        }
+
+        @media (max-width: 680px) {
+
+            #home {
+                flex-direction: column-reverse;
+            }
+
+            #home .home-right {
+                width: 100%;
+            }
+
+            .menuToggle {
+                position: relative;
+                width: 30px;
+                height: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .menuToggle::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: #fff;
+                transform: translateY(-10px);
+                transition: 0.5s;
+                box-shadow: 0 10px #fff;
+            }
+
+            .menuToggle::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: #fff;
+                transform: translateY(10px);
+                transition: 0.5s;
+            }
+
+            header.active .menuToggle::before {
+                transform: translateY(0px) rotate(45deg);
+                box-shadow: 0 0 #fff;
+            }
+
+            header.active .menuToggle::after {
+                transform: translateY(0px) rotate(315deg);
+                box-shadow: 0 0 #fff;
+            }
+
+            header ul li,
+            header .navbar {
+                display: none;
+            }
+
+            header.active ul li {
+                display: block;
+            }
+
+            header.active ul {
+                position: fixed;
+                left: 0%;
+                top: 70px;
+                width: 100%;
+                height: calc(100vh);
+                background-color: rgba(50, 50, 50, 0.95);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                z-index: 10000;
+                gap: 20px;
+            }
+
+            header.active ul li a {
+                font-size: 2em;
+            }
+
+            #diary .diary-exmaple .left {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #diary .diary-exmaple .right .card {
+                text-align: center;
+            }
+
+            #diary .wrapper .carousel .card {
+                width: 100%;
+            }
+
+            #about {
+                flex-direction: column-reverse;
+            }
+        }
+
+        @media (max-width: 415px) {
+            body {
+                padding: 0;
+            }
+
+            header {
+                padding: 10px 20px;
+            }
+
+            header .logo {
+                font-size: 1.5rem;
+            }
+
+            #home .home-left .text h4::first-letter,
+            #diary h1::first-letter,
+            #about h1::first-letter {
+                font-size: 2.75rem;
+            }
+
+            #home .home-left .text h4,
+            #diary h1,
+            #about h1 {
+                font-size: 1.25rem;
+            }
+
+            #home .home-left .text .btn {
+                font-size: 0.75rem;
+                padding: 9px 20px;
+            }
+
+            #home .home-left,
+            #diary .diary-exmaple .right {
+                max-height: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <header>
+        <!-- Logo -->
+        <a href="" class="logo">Magic Animal</a>
+        <!-- menu icon -->
+        <div class="menuToggle"></div>
+
+        <ul class="navbar">
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#diary">Diary</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+
+    </header>
+
+    <section id="home">
+        <div class="home-left">
+            <div class="text">
+                <h4>World of Magic Animal</h4>
+                <div class="btn">
+                    <a href="#diary">Enter to diary</a>
+                </div>
+            </div>
+            <div class="img-left">
+                <img src="img/istockphoto-1329659659-170667a.jpg" alt="">
+            </div>
+        </div>
+        <div class="home-right">
+            <!-- <img src="img/agto-bgcut.png" alt="bg-img"> -->
+            <img src="img/agto-nugroho-wuDvhtaAYYI-unsplash.jpg" alt="">
+        </div>
+    </section>
+    <!-- diary -->
+    <section id="diary">
+        <h1>The Diary of Magic Animal</h1>
+
+        <div class="diary-exmaple">
+            <div class="left">
+                <div class="card">
+                    <img src="img/agto-nugroho-wuDvhtaAYYI-unsplash.jpg" alt="" class="img-card">
+                    <div class="detail">
+                        <h2>dark owl</h2>
+                        <p>Mythical bird</p>
+                        <span onclick="openModal(1)">Read More</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/istockphoto-1329659659-170667a.jpg" alt="" class="img-card">
+                    <div class="detail">
+                        <h2>rhinocerros</h2>
+                        <p>Mythical bird</p>
+                        <span onclick="openModal(4)">Read More</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="right">
+                <h3>Popular</h3>
+                <div class="con">
+
+                    <div class="card">
+                        <img src="img/burning-phoenix-head-dark-background-generative-ai.jpg" alt="" class="img-card">
+                        <div class="detail">
+                            <h2>Phehix</h2>
+                            <p>Mythical bird</p>
+                            <span onclick="openModal(0)">Read More</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <i id="left" class="fa-solid fa-angle-left"></i>
+            <div class="carousel" id="carousel">
+            </div>
+            <i id="right" class="fa-solid fa-angle-right"></i>
+        </div>
+
+        <div class="modal-box">
+            <div onclick="closeModal()" class="bg"></div>
+            <div class="modal-card">
+                <h1>Detail</h1>
+                <p onclick="closeModal()" class="btn">X</p>
+                <div class="card">
+                    <img id="animal-img" src="img/burning-phoenix-head-dark-background-generative-ai.jpg" alt="">
+                    <br>
+                    <div class="detail">
+                        <h2 id="animal-name">Phehix</h2>
+                        <br>
+                        <h3 id="history">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio autem enim
+                            soluta culpa voluptatem maxime officia maiores, et pariatur dolorum error, doloribus, quam
+                            quod magni possimus vel iure officiis incidunt! Sit doloremque nihil officia non molestias.
+                            Harum sapiente officiis adipisci dolore, nisi tempora rerum enim. Ipsum omnis totam
+                            reprehenderit molestiae assumenda tenetur nulla, eius excepturi voluptates aperiam officiis
+                            sint earum aspernatur et animi neque facere! Vero unde possimus delectus excepturi obcaecati
+                            rerum assumenda culpa rem. Provident quasi hic ad atque ab. Quae aperiam maxime vero odio,
+                            asperiores inventore corporis repudiandae deleniti deserunt ab. Inventore iste modi facere
+                            aut consectetur culpa?</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="left">
+            <h1>About Stang</h1>
+            <br>
+            <p>Hi, I'm stang. I created this website to apply for IT Camp19 where this website is used to read stories
+                of various magical creatures in this world. And I hope this website will be useful for everyone.</p>
+            <br>
+            <h1>Contact</h1>
+            <div class="social">
+                <i class="fa-sharp fa-solid fa-envelope"><a
+                        href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRwRQGRbzMzgLpKMHLMqxffrNWzhbbpPznVVBKHBdSWPkldRZjqjHwPJVBHpqWFXtmtwBVCM">
+                        sahratwichian@gmail.com</a></i>
+                <i class="fa-brands fa-facebook"><a href="https://www.facebook.com/saharat.wichian.7"> Saharat
+                        Wcihian</a></i>
+                <i class="fa-brands fa-github"><a href="https://github.com/stangz14"> stangz14</a></i>
+                <i class="fa-brands fa-instagram"><a href="https://www.instagram.com/sta_ngz/"> sta_ngz</a></i>
+            </div>
+        </div>
+        <div class="right">
+            <img src="img/IMG_20230422_230626.jpg" alt="">
+        </div>
+    </section>
+
+    <script>
+
+
+        const animal = [{
+            id: 0,
+            name: 'Phehix',
+            img: 'img/burning-phoenix-head-dark-background-generative-ai.jpg',
+            Shistory: 'Mythical bird',
+            history: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio autem enim soluta culpa voluptatem maxime officia maiores, et pariatur dolorum error, doloribus, quam quod magni possimus vel iure officiis incidunt! Sit doloremque nihil officia non molestias. Harum sapiente officiis adipisci dolore, nisi tempora rerum enim. Ipsum omnis totam reprehenderit molestiae assumenda tenetur nulla, eius excepturi voluptates aperiam officiis sint earum aspernatur et animi neque facere! Vero unde possimus delectus excepturi obcaecati rerum assumenda culpa rem. Provident quasi hic ad atque ab. Quae aperiam maxime vero odio, asperiores inventore corporis repudiandae deleniti deserunt ab. Inventore iste modi facere aut consectetur culpa?'
+        }, {
+            id: 1,
+            name: 'dark owl',
+            img: 'img/agto-nugroho-wuDvhtaAYYI-unsplash.jpg',
+            Shistory: 'Mythical bird',
+            history: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio autem enim soluta culpa voluptatem maxime officia maiores, et pariatur dolorum error, doloribus, quam quod magni possimus vel iure officiis incidunt! Sit doloremque nihil officia non molestias. Harum sapiente officiis adipisci dolore, nisi tempora rerum enim. Ipsum omnis totam reprehenderit molestiae assumenda tenetur nulla, eius excepturi voluptates aperiam officiis sint earum aspernatur et animi neque facere! Vero unde possimus delectus excepturi obcaecati rerum assumenda culpa rem. Provident quasi hic ad atque ab. Quae aperiam maxime vero odio, asperiores inventore corporis repudiandae deleniti deserunt ab. Inventore iste modi facere aut consectetur culpa?'
+        }, {
+            id: 2,
+            name: 'pegasus',
+            img: 'img/pegasus.jpg',
+            Shistory: 'Horse with wings',
+            history: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio autem enim soluta culpa voluptatem maxime officia maiores, et pariatur dolorum error, doloribus, quam quod magni possimus vel iure officiis incidunt! Sit doloremque nihil officia non molestias. Harum sapiente officiis adipisci dolore, nisi tempora rerum enim. Ipsum omnis totam reprehenderit molestiae assumenda tenetur nulla, eius excepturi voluptates aperiam officiis sint earum aspernatur et animi neque facere! Vero unde possimus delectus excepturi obcaecati rerum assumenda culpa rem. Provident quasi hic ad atque ab. Quae aperiam maxime vero odio, asperiores inventore corporis repudiandae deleniti deserunt ab. Inventore iste modi facere aut consectetur culpa?'
+        }, {
+            id: 3,
+            name: 'Dragon',
+            img: 'img/Dragon.jpg',
+            Shistory: 'Fire-resistant chameleon',
+            history: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio autem enim soluta culpa voluptatem maxime officia maiores, et pariatur dolorum error, doloribus, quam quod magni possimus vel iure officiis incidunt! Sit doloremque nihil officia non molestias. Harum sapiente officiis adipisci dolore, nisi tempora rerum enim. Ipsum omnis totam reprehenderit molestiae assumenda tenetur nulla, eius excepturi voluptates aperiam officiis sint earum aspernatur et animi neque facere! Vero unde possimus delectus excepturi obcaecati rerum assumenda culpa rem. Provident quasi hic ad atque ab. Quae aperiam maxime vero odio, asperiores inventore corporis repudiandae deleniti deserunt ab. Inventore iste modi facere aut consectetur culpa?'
+        }, {
+            id: 4,
+            name: 'rhinocerros',
+            img: 'img/istockphoto-1329659659-170667a.jpg',
+            Shistory: 'animal with horns in the mouth',
+            history: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio autem enim soluta culpa voluptatem maxime officia maiores, et pariatur dolorum error, doloribus, quam quod magni possimus vel iure officiis incidunt! Sit doloremque nihil officia non molestias. Harum sapiente officiis adipisci dolore, nisi tempora rerum enim. Ipsum omnis totam reprehenderit molestiae assumenda tenetur nulla, eius excepturi voluptates aperiam officiis sint earum aspernatur et animi neque facere! Vero unde possimus delectus excepturi obcaecati rerum assumenda culpa rem. Provident quasi hic ad atque ab. Quae aperiam maxime vero odio, asperiores inventore corporis repudiandae deleniti deserunt ab. Inventore iste modi facere aut consectetur culpa?'
+        }];
+
+
+
+
+
+        const openweb = (() => {
+            var html = '';
+            for (let i = 0; i < animal.length; i++) {
+                html += `<div class="card">
+                    <img src="${animal[i].img}" alt="" class="img-card">
+                    <div class="detail">
+                        <h2>${animal[i].name}</h2>
+                        <p>${animal[i].Shistory}</p>
+                        <span onclick="openModal(${animal[i].id})">Read More</span>
+                    </div>
+                </div>`
+            }
+            document.querySelector('#carousel').innerHTML = html;
+        });
+
+        window.onload = openweb();
+
+        const openModal = ((index) => {
+            document.querySelector(".modal-box").style.display = 'flex';
+            document.querySelector('#animal-img').src = animal[index].img;
+            document.querySelector('#animal-name').innerText = animal[index].name;
+            document.querySelector('#history').innerText = animal[index].history;
+
+        })
+
+        const closeModal = (() => {
+            document.querySelector('.modal-box').style.display = 'none';
+        })
+
+        const menuToggle = document.querySelector('.menuToggle');
+        const header = document.querySelector('header');
+        menuToggle.onclick = function () {
+            header.classList.toggle('active');
+        }
+
+        const list = document.querySelectorAll('.navbar li');
+        function active() {
+            list.forEach((i) => {
+                i.classList.remove('active');
+                header.classList.remove('active');
+            });
+            this.classList.add('active');
+        }
+
+
+        list.forEach((i) => {
+
+            i.addEventListener('click', active)
+        });
+
+
+        const carousel = document.querySelector(".carousel"),
+            firstImg = carousel.querySelectorAll("img")[0],
+            arrowIcons = document.querySelectorAll(".wrapper i");
+
+        let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
+
+        const showHideIcons = () => {
+            let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+            arrowIcons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
+            arrowIcons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
+        }
+
+        arrowIcons.forEach(icon => {
+            icon.addEventListener("click", () => {
+                let firstImgWidth = firstImg.clientWidth + 14;
+                carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
+                setTimeout(() => showHideIcons(), 60);
+            });
+        });
+
+        const autoSlide = () => {
+            if (carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
+
+            positionDiff = Math.abs(positionDiff);
+            let firstImgWidth = firstImg.clientWidth + 14;
+            let valDifference = firstImgWidth - positionDiff;
+
+            if (carousel.scrollLeft > prevScrollLeft) {
+                return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+            }
+            carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+        }
+
+        const dragStart = (e) => {
+            isDragStart = true;
+            prevPageX = e.pageX || e.touches[0].pageX;
+            prevScrollLeft = carousel.scrollLeft;
+        }
+
+        const dragging = (e) => {
+            if (!isDragStart) return;
+            e.preventDefault();
+            isDragging = true;
+            carousel.classList.add("dragging");
+            positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+            carousel.scrollLeft = prevScrollLeft - positionDiff;
+            showHideIcons();
+        }
+
+        const dragStop = () => {
+            isDragStart = false;
+            carousel.classList.remove("dragging");
+
+            if (!isDragging) return;
+            isDragging = false;
+            autoSlide();
+        }
+
+        carousel.addEventListener("mousedown", dragStart);
+        carousel.addEventListener("touchstart", dragStart);
+
+        document.addEventListener("mousemove", dragging);
+        carousel.addEventListener("touchmove", dragging);
+
+        document.addEventListener("mouseup", dragStop);
+        carousel.addEventListener("touchend", dragStop);
+
+
+
+    </script>
+</body>
+
+</html>
